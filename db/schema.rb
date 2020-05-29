@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_193227) do
     t.string "gravatar_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

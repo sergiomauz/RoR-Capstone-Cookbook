@@ -44,6 +44,8 @@ group :development, :test do
 
   gem 'database_cleaner'
   gem 'rspec-rails'
+
+  gem 'hirb', '~> 0.7.3'
 end
 
 group :development do
