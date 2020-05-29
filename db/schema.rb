@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2020_05_28_193227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "groups", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", limit: 35, null: false
+    t.string "icon", null: false
+    t.datetime "createdAt", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updatedAt", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.integer "authorid", null: false
     t.string "name", limit: 35, null: false
