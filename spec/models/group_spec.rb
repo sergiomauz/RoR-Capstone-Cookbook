@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  let(:group) { Group.new(name: 'Stew', icon: "https://somedomain.com/icon.png") }
+  let(:group) { Group.new(name: 'Stew', icon: 'https://somedomain.com/icon.png') }
 
   it 'Is valid if new group has valid attributes' do
     expect(group).to be_valid
   end
 
-  it 'Is not valid if new group -name- has fewer characters than 3' do    
+  it 'Is not valid if new group -name- has fewer characters than 3' do
     group.name = 'St'
     expect(group).to_not be_valid
   end
@@ -21,5 +21,5 @@ RSpec.describe Group, type: :model do
     group.name = 'Stew'
     group.icon = nil
     expect(group).to_not be_valid
-  end  
+  end
 end
