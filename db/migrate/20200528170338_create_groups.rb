@@ -4,8 +4,8 @@ class CreateGroups < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.string :name, null: false, limit: 35
       t.string :icon, null: false
-      t.datetime :createdAt, null: false, default: -> { 'CURRENT_TIMESTAMP' }
-      t.datetime :updatedAt, null: false, default: -> { 'CURRENT_TIMESTAMP' }
+      
+      t.timestamps
     end
 
     add_index :groups, :user_id
