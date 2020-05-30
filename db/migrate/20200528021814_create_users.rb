@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name, null: false, limit: 35
       t.string :username, null: false, limit: 15
-      t.string :gravatar_url
+      t.string :avatar
 
       t.timestamps
     end
