@@ -6,4 +6,7 @@ class Ingredient < ApplicationRecord
     errors.add(:amount, '-amount- should be less or equal to 9999.99') if amount > 9999.99
     errors.add(:amount, '-amount- should be higher than 0') if amount <= 0
   end
+
+  belongs_to :author, class_name: 'User', :dependent => :destroy, :inverse_of => :ingredients
+  belongs_to :group, optional: true
 end

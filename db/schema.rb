@@ -10,26 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_28_193227) do
+ActiveRecord::Schema.define(version: 2020_05_29_074200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.string "name", limit: 35, null: false
     t.string "icon", null: false
-    t.datetime "createdAt", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.datetime "updatedAt", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "authorid", null: false
+    t.bigint "author_id", null: false
     t.string "name", limit: 35, null: false
     t.decimal "amount", precision: 6, scale: 2, null: false
-    t.datetime "createdat", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.datetime "updatedat", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.index ["author_id"], name: "index_ingredients_on_author_id"
+    t.index ["group_id"], name: "index_ingredients_on_group_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +44,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_193227) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "groups", "users"
+  add_foreign_key "ingredients", "groups"
+  add_foreign_key "ingredients", "users", column: "author_id"
 end
