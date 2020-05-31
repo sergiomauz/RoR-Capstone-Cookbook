@@ -4,12 +4,12 @@ class Group < ApplicationRecord
 
   validate :valid_icon?
 
-  def valid_icon?        
-    if !icon.nil?
-      uri = URI.parse(icon)
-      errors.add(:icon, '-icon- should be a valid URL') if uri.host.nil?
+  def valid_icon?
+    if icon.nil?
+      errors.add(:icon, '-icon- must be a valid URL')
     else
-      errors.add(:icon, '-icon- should be a valid URL')
+      uri = URI.parse(icon)
+      errors.add(:icon, '-icon- must be a valid URL') if uri.host.nil?
     end
   end
 

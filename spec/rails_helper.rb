@@ -43,4 +43,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.before(:each) do
+    User.create(name: 'Sergio Mauricio Zambrano', username: 'sergiomauz')
+  end
 end

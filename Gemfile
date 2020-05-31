@@ -43,9 +43,13 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   gem 'database_cleaner'
-  gem 'rspec-rails'
-
   gem 'hirb', '~> 0.7.3'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'rspec'
 end
 
 group :development do
@@ -56,13 +60,6 @@ group :development do
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'rspec'
-  gem 'selenium-webdriver'
 end
 
 group :production do

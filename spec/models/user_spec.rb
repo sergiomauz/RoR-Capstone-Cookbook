@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(name: 'Magic Johnson', username: 'mjohnson') }
+  let(:user) { User.first }
 
   it 'Is valid with valid attributes' do
     expect(user).to be_valid
@@ -24,6 +24,11 @@ RSpec.describe User, type: :model do
 
   it 'Is not valid if new user -username- has more characters than 15' do
     user.username = 'magicjohnsonmagic'
+    expect(user).to_not be_valid
+  end
+
+  it 'Is not valid if new user -username- has whitespace characters' do
+    user.username = 'magic johns'
     expect(user).to_not be_valid
   end
 end

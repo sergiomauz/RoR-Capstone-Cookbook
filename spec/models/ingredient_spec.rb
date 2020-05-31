@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Ingredient, type: :model do
-  let(:ingredient) { Ingredient.new(name: 'Carrots', amount: 5.50) }
+  let(:user) { User.first }
+  let(:ingredient) { user.ingredients.new(name: 'Carrots', amount: 5.50) }
 
   it 'Is valid with valid attributes' do
     expect(ingredient).to be_valid

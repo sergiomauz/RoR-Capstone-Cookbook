@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  let(:group) { Group.new(name: 'Stew', icon: 'https://somedomain.com/icon.png') }
+  let(:user) { User.first }
+  let(:group) { user.groups.new(name: 'Stew', icon: 'https://somedomain.com/icon.png') }
 
   it 'Is valid if new group has valid attributes' do
     expect(group).to be_valid
