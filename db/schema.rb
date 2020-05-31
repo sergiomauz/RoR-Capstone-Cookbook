@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_074200) do
   create_table "users", force: :cascade do |t|
     t.string "name", limit: 35, null: false
     t.string "username", limit: 15, null: false
-    t.string "gravatar_url"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_users_on_username", unique: true
