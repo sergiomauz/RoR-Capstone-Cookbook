@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RoRCapstoneCookbook</title>
+    <title>My Cook Book :D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="d-flex" id="wrapper">
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">
+          <img src="https://i7.pngguru.com/preview/831/88/865/user-profile-computer-icons-user-interface-mystique.jpg" alt="" width="200" height="200">
+        </div>
+        <div class="list-group list-group-flush">
+          <% if current_user %>
+            <%= link_to 'All my transactions', '#', class: 'list-group-item list-group-item-action bg-light' %>
+            <%= link_to 'All my external transactions', '#', class: 'list-group-item list-group-item-action bg-light' %>
+            <%= link_to 'All groups', '#', class: 'list-group-item list-group-item-action bg-light' %>          
+            <%= link_to 'Sign out', '#', class: 'list-group-item list-group-item-action bg-light' %>          
+          <% else %>
+            <%= link_to 'Sign up', '#', class: 'list-group-item list-group-item-action bg-light' %>
+            <%= link_to 'Sign in', '#', class: 'list-group-item list-group-item-action bg-light' %>
+          <% end %>
+        </div>
+      </div>
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <button class="btn btn-outline-secondary" Type="button" id="menu-toggle">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+      </div>
+    </div>  
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
