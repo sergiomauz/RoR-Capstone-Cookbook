@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
+  add_flash_types :error, :success
 
   def current_user
     if session[:user_id]
@@ -7,5 +8,5 @@ class ApplicationController < ActionController::Base
     else
       @current_user = nil
     end
-  end  
+  end
 end

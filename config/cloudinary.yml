@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: sergiouce16
+  api_key: '479393641639329'
+  api_secret: 9KnHIaMKVOzkiHppxaP8PhWRLC0
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: sergiouce16
+  api_key: '479393641639329'
+  api_secret: 9KnHIaMKVOzkiHppxaP8PhWRLC0
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: sergiouce16
+  api_key: '479393641639329'
+  api_secret: 9KnHIaMKVOzkiHppxaP8PhWRLC0
+  enhance_image_tag: true
+  static_file_support: false

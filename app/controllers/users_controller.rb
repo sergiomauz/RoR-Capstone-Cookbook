@@ -1,12 +1,45 @@
+require 'digest/sha1'
+
 class UsersController < ApplicationController
-  def index
-    @a = 1 + 3
-    p "Hello " + @a.to_s
+  def index; end
+
+  def new
+    @user = User.new
+  end
+  
+  def create
+    if !user_params[:image_file].nil?
+      upload_file = Cloudinary::Uploader.upload(user_params[:image_file])
+      @user = User.new(name: user_params[:name], username: user_params[:username], avatar: upload_file['secure_url'])
+    else
+      @user = User.new(name: user_params[:name], username: user_params[:username])
+    end
+        
+    if @user.save
+      redirect_to(root_path, notice: 'You are signed up. Now you can sign in!')
+    else
+      redirect_to(new_user_path, error: 'It failed!. ' + @user.errors.full_messages[0].to_s)      
+    end
+  end
+  
+  def signin
+    user = User.where(username: user_params[:username])[0]
+    if user
+      session[:user_id] = user.id
+      redirect_to(root_path, notice: 'You are signed in!')      
+    else
+      redirect_to(new_user_path, alert: 'Invalid username!. You must sign up to continue.')      
+    end
+  end
+
+  def signout
+    session[:user_id] = nil
+    redirect_to(root_path, danger: 'You are signed out!')      
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :avatar)
+    params.require(:user).permit(:name, :username, :avatar, :image_file)
   end  
 end

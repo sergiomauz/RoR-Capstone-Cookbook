@@ -1,0 +1,13 @@
+  <h1>Sign up</h1>
+  <%= form_for :user, url: users_path, method: 'post' do |f| %>
+    <%= f.label :image_file, "Avatar:" %>
+    <%= f.file_field :image_file, class: 'form-control', placeholder: 'Photo (optional)'  %>
+
+    <%= f.label :name, 'Name: ', class: 'sr-only' %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+
+    <%= f.label :username, 'Username: ', class: 'sr-only' %>
+    <%= f.text_field :username, class: 'form-control', placeholder: 'Username' %>
+
+    <%= f.submit 'Sign Up', class: 'btn btn-lg btn-primary btn-block'%>
+  <% end %>
