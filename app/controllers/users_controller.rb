@@ -9,17 +9,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    if !user_params[:image_file].nil?
+    @user = User.new(name: user_params[:name], username: user_params[:username])
+    unless user_params[:image_file].nil?
       uploaded_file = Cloudinary::Uploader.upload(user_params[:image_file])
-      @user = User.new(name: user_params[:name], username: user_params[:username], avatar: uploaded_file['secure_url'])
-    else
-      @user = User.new(name: user_params[:name], username: user_params[:username])
+      @user.avatar = uploaded_file['secure_url']
     end
 
     if @user.save
       flash[:notice] = 'You are signed up. Now you can sign in!'
-      redirect_to root_path
-    else      
+      redirect_to users_path
+    else
+      @page_title = 'SIGN UP'
       flash.now[:error] = @user.errors.full_messages.join('. | ').to_s
       render new_user_path
     end

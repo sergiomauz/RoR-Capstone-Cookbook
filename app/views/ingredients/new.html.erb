@@ -1,11 +1,17 @@
+
+
 <%= form_for :ingredient, url: ingredients_path, method: 'post' do |f| %>
-  <div class="form-group">
-    <%= f.label :name, 'Name: ', class: 'sr-only' %>
-    <%= f.text_field :name, class: 'form-control', maxlength: 35, placeholder: 'Name' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :amount, class: 'sr-only' %>
-    <%= f.number_field :amount, class: 'form-control', step: 0.01, placeholder: 'Amount' %>
-  </div>   
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="form-group">
+        <%= f.label :name, 'Name: ', class: 'sr-only' %>
+        <%= f.text_field :name, class: 'form-control', maxlength: 35, placeholder: 'Name' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :amount, class: 'sr-only' %>
+        <%= f.number_field :amount, class: 'form-control', step: 0.01, placeholder: 'Amount' %>
+      </div>   
+    </div>
+  </div>      
   <%= f.submit 'Save', class: 'btn btn-lg btn-success btn-block'%>
-<% end %>
+<% end %>  
