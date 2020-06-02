@@ -1,0 +1,14 @@
+<table>
+  <tbody>
+    <% @groups.each do |g| %>
+      <tr>
+        <td>
+          <%= cl_image_tag(g.icon, width: 72, height: 72, crop: 'pad') %>
+        </td>
+        <td><%= g.name %></td>
+        <td><%= g.total_amount %></td>
+      </tr>
+    <% end %>    
+  </tbody>
+</table>
+<%= link_to 'New', new_group_path, class: 'btn btn-lg btn-success btn-block' %>

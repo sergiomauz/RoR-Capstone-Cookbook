@@ -1,7 +1,7 @@
 require 'uri'
 
 class User < ApplicationRecord
-  attr_accessor :image_file  
+  attr_accessor :image_file
 
   validates :name, presence: true, length: { maximum: 35 }
   validates :username, presence: true, length: { maximum: 15 }, uniqueness: true

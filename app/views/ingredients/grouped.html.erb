@@ -1,0 +1,13 @@
+<table>
+  <tbody>
+    <% @grouped_ingredients.each do |i| %>
+      <tr>
+        <td><%= cl_image_tag(i.group.icon, width: 72, height: 72, crop: 'pad') %></td>
+        <td><%= i.name %></td>
+        <td><%= i.amount %></td>
+        <td><%= i.created_at.strftime("%Y-%m-%d") %></td>
+      </tr>
+    <% end %>    
+  </tbody>
+</table>
+<%= link_to 'New', new_ingredient_path, class: 'btn btn-lg btn-success btn-block' %>

@@ -7,6 +7,12 @@ body {
   overflow-x: hidden;
 }
 
+.sidebar-user-avatar {
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+}
+
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
@@ -14,6 +20,7 @@ body {
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
+  background-color: #3778c2;
 }
 
 #sidebar-wrapper .sidebar-heading {

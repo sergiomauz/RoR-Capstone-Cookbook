@@ -1,11 +1,16 @@
 <% if current_user %>
   Holi!
 <% else %>
-  <h1> Sign In </h1>
-  <%= form_for :user, url: signin_path, method: 'post' do |f| %>
-    <%= f.label :username, 'Username: ', class: 'sr-only' %>
-    <%= f.text_field :username, class: 'form-control' %>
-    <%= f.submit 'Sign In', class: 'btn btn-lg btn-primary btn-block'%>
-  <% end %>
+  <div class="row">
+    <div class="col">
+      <%= form_for :user, url: signin_path, method: 'post' do |f| %>
+        <div class="form-group">
+          <%= f.label :username, 'Username: ', class: 'sr-only' %>
+          <%= f.text_field :username, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Sign In', class: 'btn btn-lg btn-primary btn-block'%>
+      <% end %>  
+    </div>
+  </div>
 <% end %>
 
