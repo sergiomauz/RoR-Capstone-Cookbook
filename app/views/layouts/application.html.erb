@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cookbook</title>
+    <title>Cook Book</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,7 +19,7 @@
             <% if current_user.avatar.nil? %>
               <%= image_tag('/generic-user.png', class: 'sidebar-user-avatar') %>
             <% else %>
-              <%= cl_image_tag(current_user.avatar, width: 150, height: 150, crop: 'pad') %>
+              <%= cl_image_tag(current_user.avatar, class: 'sidebar-user-avatar', width: 150, height: 150, crop: 'pad') %>
             <% end %>            
           </div>
           <div class="container mb-3">
@@ -53,14 +53,14 @@
             </div>
           </div>          
           <div class="list-group list-group-flush">
-            <%= link_to "<i class='fas fa-user-plus'></i><span><span> Sign up</span>".html_safe, new_user_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
-            <%= link_to "<i class='fas fa-sign-in-alt'></i><span><span> Sign in</span>".html_safe, root_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
+            <%= link_to "<i class='fas fa-user-plus'></i><span> Sign up</span>".html_safe, new_user_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
+            <%= link_to "<i class='fas fa-sign-in-alt'></i><span> Sign in</span>".html_safe, root_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
           </div>
         <% end %>    
         
       </div>
       <div id="page-content-wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg_3778c2 d-flex justify-content-between mb-3">
+        <nav class="navbar bg_3778c2 d-flex justify-content-between mb-3">
           <button class="btn bg-sidebar-item text-white" Type="button" id="menu-toggle">
             <i class="fa fa-bars" aria-hidden="true"></i>
           </button>

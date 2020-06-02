@@ -1,12 +1,19 @@
 class GroupsController < ApplicationController
   def index
-    @page_title = 'ALL GROUPS'
+    @page_title = 'RECIPES'
     @groups = Group.all.order('name ASC')
   end
 
+  def show
+    group = Group.find(params[:id])
+    @ingredients = group.ingredients
+    @page_title = group.name
+    @spent = group.total_amount
+  end
+
   def new
-    @page_title = 'NEW GROUP'
-    @group = current_user.groups.new
+    @page_title = 'NEW RECIPE'
+    @group = current_user.groups.new    
   end
 
   def create
@@ -17,10 +24,10 @@ class GroupsController < ApplicationController
     end
 
     if @group.save
-      flash[:notice] = 'Group created!'
+      flash[:notice] = 'Recipe created!'
       redirect_to groups_path
     else
-      @page_title = 'NEW GROUP'
+      @page_title = 'NEW RECIPE'
       flash.now[:error] = @group.errors.full_messages.join('. | ').to_s
       render new_group_path
     end

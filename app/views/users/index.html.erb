@@ -1,16 +1,16 @@
 <% if current_user %>
   Holi!
 <% else %>
-      <%= form_for :user, url: signin_path, method: 'post' do |f| %>
-        <div class="card mb-3">
-          <div class="card-body">      
-            <div class="form-group">
-              <%= f.label :username, 'Username: ', class: 'sr-only' %>
-              <%= f.text_field :username, class: 'form-control', maxlength: 15, placeholder: 'Username' %>        
-            </div>
-          </div>
-        </div>           
-        <%= f.submit 'New session', class: 'btn btn-lg btn-success btn-block'%>
-      <% end %>
+  <%= form_for :user, url: signin_path, method: 'post' do |f| %>
+    <div class="card mb-3">
+      <div class="card-body">      
+        <div class="form-group">
+          <%= f.label :username, 'Username: ', class: 'sr-only' %>
+          <%= f.text_field :username, class: 'form-control', maxlength: 15, placeholder: 'Username' %>        
+        </div>
+      </div>
+    </div>           
+    <%= f.submit 'New session', class: 'btn btn-lg btn-success btn-block'%>
+  <% end %>
 <% end %>
 

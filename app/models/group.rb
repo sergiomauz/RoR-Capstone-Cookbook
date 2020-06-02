@@ -9,11 +9,9 @@ class Group < ApplicationRecord
   belongs_to :user
   has_many :ingredients
 
-  def total_amount
-    sum = 0
-    ingredients.all.each do |i|
-      sum += i.amount
-    end
+  def total_amount    
+    recipe_ingredients = self.ingredients
+    sum = recipe_ingredients.sum{ |ingredient| ingredient.amount }
     sum
   end
 

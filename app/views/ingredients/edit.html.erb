@@ -1,0 +1,11 @@
+<%= form_for :ingredient, url: ingredient_path, method: 'put' do |f| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="form-group">
+        <%= f.label :group_id, 'Recipe: ', class: 'sr-only' %>
+        <%= f.select('group_id', options_for_select(@groups.map { |group| [group.name, group.id] }), {}, {class: 'form-control'}) %>
+      </div>
+    </div>
+  </div>      
+  <%= f.submit 'Save', class: 'btn btn-lg btn-success btn-block'%>
+<% end %>  

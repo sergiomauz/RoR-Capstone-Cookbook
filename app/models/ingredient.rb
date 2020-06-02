@@ -1,6 +1,6 @@
 class Ingredient < ApplicationRecord
-  scope :grouped, -> { where.not(group: [nil]) }
-  scope :non_grouped, -> { where(group: [nil]).order('created_at DESC') }
+  scope :grouped, -> { where.not(group: [nil]).order('created_at DESC') }
+  scope :non_grouped, -> { where(group: [nil]).order('created_at DESC') }  
 
   validates :name, presence: true, length: { minimum: 3, maximum: 35 }
   validate :valid_amount
