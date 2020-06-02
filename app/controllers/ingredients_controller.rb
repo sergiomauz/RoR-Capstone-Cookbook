@@ -36,20 +36,20 @@ class IngredientsController < ApplicationController
       @page_title = 'EDIT INGREDIENT'
       flash.now[:error] = @ingredient.errors.full_messages.join('. | ').to_s
       render edit_ingredient_path(@ingredient.id)
-    end    
+    end
   end
 
   def grouped
     user = User.find(session[:user_id])
     @page_title = 'INGREDIENTS'
-    @grouped_ingredients = user.ingredients.grouped            
-    @spent = @grouped_ingredients.sum{ |ingredient| ingredient.amount }
+    @grouped_ingredients = user.ingredients.grouped
+    @spent = @grouped_ingredients.sum(&:amount)
   end
 
   def nongrouped
     @page_title = 'NON GROUPED'
     @non_grouped_ingredients = User.find(session[:user_id]).ingredients.non_grouped
-    @spent = @non_grouped_ingredients.sum{ |ingredient| ingredient.amount }
+    @spent = @non_grouped_ingredients.sum(&:amount)
   end
 
   private

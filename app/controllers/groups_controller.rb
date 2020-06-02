@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
 
   def new
     @page_title = 'NEW RECIPE'
-    @group = current_user.groups.new    
+    @group = current_user.groups.new
   end
 
   def create
