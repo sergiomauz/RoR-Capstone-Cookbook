@@ -1,0 +1,41 @@
+
+<%= form_for :group, url: groups_path, method: 'post' do |f| %>
+  <div class="card mb-3">
+    <div class="card-body">   
+      <div class="form-group d-flex justify-content-center">
+        <div id="preview_container"></div>
+      </div>         
+      <div class="form-group">
+        <%= f.label :image_file, 'Image: -No file chosen-', class: 'form-control' %>
+        <%= f.file_field :image_file, class: 'd-none' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name, class: 'sr-only' %>
+        <%= f.text_field :name, class: 'form-control', maxlength: 35, placeholder: 'Name' %>
+      </div>       
+    </div>
+  </div>      
+  <%= f.submit 'Save', class: 'btn btn-lg btn-success btn-block'%>
+<% end %>
+
+<script>
+  var group_image_file = document.getElementById("group_image_file");    
+  group_image_file.onchange = ((e) => {
+    let label_group_image_file = group_image_file.labels[0];  
+    let reader = new FileReader();
+
+    label_group_image_file.innerHTML = "Photo: " + group_image_file.files[0].name
+    reader.readAsDataURL(e.target.files[0]);    
+
+    reader.onload = function(){
+      let preview = document.getElementById('preview_container');      
+      let new_photo = document.createElement('img');      
+      new_photo.className = 'sidebar-user-avatar'
+      new_photo.src = reader.result;
+      preview.innerHTML = '';      
+      preview.append(new_photo);
+    };
+
+    e.preventDefault();
+  });
+</script>

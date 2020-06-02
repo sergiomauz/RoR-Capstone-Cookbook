@@ -1,0 +1,31 @@
+<% if @groups.count > 0 %>
+  <% @groups.each do |g| %>
+    <a href="<%= group_path(g.id) %>" class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">        
+            <%= cl_image_tag(g.icon, width: 72, height: 72, crop: 'pad') %>
+          </div>
+          <div class="col-7">        
+            <%= g.name %>
+            <br>Created at
+            <%= g.created_at.strftime("%Y-%m-%d") %>
+            <br>by <%= g.user.name %>
+          </div>
+          <div class="col-2">        
+            <%= g.total_amount %>
+          </div>
+        </div>
+      </div>
+    </a> 
+  <% end %>
+<% else %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">      
+        <div class="col-12">There are no recipes in this list.</div>                
+      </div>
+    </div>
+  </div>         
+<% end %>
+<%= link_to 'Create new', new_group_path, class: 'btn btn-lg btn-success btn-block mb-4' %>
