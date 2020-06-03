@@ -1,0 +1,32 @@
+<% if @stores.count > 0 %>
+  <% @stores.each do |s| %>
+    <a href="<%= edit_store_path(s.id) %>" class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-1">        
+            <i class="fas fa-store-alt"></i>       
+          </div>        
+          <div class="col-5">        
+            <%= s.name %>            
+          </div>
+          <div class="col-3">        
+            Created at <%= s.created_at.strftime("%Y-%m-%d") %>
+          </div>
+          <div class="col-3">        
+            Updated at <%= s.updated_at.strftime("%Y-%m-%d") %>
+          </div>          
+        </div>
+      </div>
+    </a> 
+  <% end %>
+<% else %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">      
+        <div class="col-12">There are no recipes in this list.</div>                
+      </div>
+    </div>
+  </div>         
+<% end %>
+
+<%= link_to 'New store', new_store_path, class: 'btn btn-lg btn-success btn-block' %>

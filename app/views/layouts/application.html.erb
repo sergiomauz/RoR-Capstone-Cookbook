@@ -36,6 +36,7 @@
             <%= link_to "<i class='fas fa-list-ul'></i><span> Non grouped</span>".html_safe, non_grouped_ingredients_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
             <%= link_to "<i class='fas fa-list-ol'></i><span> Ingredients<span>".html_safe, grouped_ingredients_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>            
             <%= link_to "<i class='fas fa-stroopwafel'></i><span> Recipes</span>".html_safe, groups_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>          
+            <%= link_to "<i class='fas fa-store-alt'></i><span> Stores</span>".html_safe, stores_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>          
             <%= link_to "<i class='fas fa-sign-out-alt'></i><span><span> Sign out</span>".html_safe, signout_path(current_user.id), method: 'delete', class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
           </div>          
         <% else %>

@@ -2,7 +2,17 @@
   <div class="card mb-3">
     <div class="card-body">
       <div class="form-group">
-        <%= f.label :group_id, 'Recipe: ', class: 'sr-only' %>
+        <p>
+          <label>Ingredient:</label>
+          <%= @ingredient.name %>
+        </p>        
+        <p>
+          <label>Amount:</label>
+          <%= @ingredient.amount %>
+        </p>                
+      </div>
+      <div class="form-group">
+        <%= f.label :group_id, 'Recipe: ' %>
         <%= f.select('group_id', options_for_select(@groups.map { |group| [group.name, group.id] }), {}, {class: 'form-control'}) %>
       </div>
     </div>

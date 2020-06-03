@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_074200) do
+ActiveRecord::Schema.define(version: 2020_06_03_005121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,16 @@ ActiveRecord::Schema.define(version: 2020_05_29_074200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"
+    t.bigint "store_id"
     t.index ["author_id"], name: "index_ingredients_on_author_id"
     t.index ["group_id"], name: "index_ingredients_on_group_id"
+    t.index ["store_id"], name: "index_ingredients_on_store_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name", limit: 35, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,5 +54,6 @@ ActiveRecord::Schema.define(version: 2020_05_29_074200) do
 
   add_foreign_key "groups", "users"
   add_foreign_key "ingredients", "groups"
+  add_foreign_key "ingredients", "stores"
   add_foreign_key "ingredients", "users", column: "author_id"
 end

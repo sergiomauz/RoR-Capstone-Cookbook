@@ -7,6 +7,7 @@ class Ingredient < ApplicationRecord
 
   belongs_to :author, class_name: 'User', dependent: :destroy, inverse_of: :ingredients
   belongs_to :group, optional: true
+  belongs_to :store
 
   private
 
