@@ -20,7 +20,7 @@
 
 <script>
   var group_image_file = document.getElementById("group_image_file");    
-  group_image_file.onchange = ((e) => {
+  group_image_file.onchange = (function(e) {
     let label_group_image_file = group_image_file.labels[0];  
     let reader = new FileReader();
 
