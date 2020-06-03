@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :must_be_authenticated
+
   def index
     @page_title = 'RECIPES'
     @groups = Group.all.order('name ASC')

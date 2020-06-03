@@ -1,4 +1,6 @@
 class StoresController < ApplicationController
+  before_action :must_be_authenticated
+
   def index
     @stores = Store.all.order('name ASC')
     @page_title = 'STORES'
