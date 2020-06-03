@@ -1,4 +1,4 @@
-class StoresController < ApplicationController  
+class StoresController < ApplicationController
   def index
     @stores = Store.all.order('name ASC')
     @page_title = 'STORES'
@@ -6,7 +6,7 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
-    @page_title = 'NEW STORE'    
+    @page_title = 'NEW STORE'
   end
 
   def edit

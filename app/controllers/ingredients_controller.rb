@@ -23,7 +23,7 @@ class IngredientsController < ApplicationController
     else
       @page_title = 'NEW INGREDIENT'
       @stores = Store.all
-      flash.now[:error] = @ingredient.errors.full_messages.join('. | ').to_s      
+      flash.now[:error] = @ingredient.errors.full_messages.join('. | ').to_s
       render new_ingredient_path
     end
   end
