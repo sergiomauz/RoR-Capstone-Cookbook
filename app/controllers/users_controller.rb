@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @page_title = 'SIGN IN'
+    @page_title = if current_user
+                    'START'
+                  else
+                    'SIGN IN'
+                  end
   end
 
   def new

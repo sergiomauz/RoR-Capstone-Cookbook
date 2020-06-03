@@ -2,8 +2,8 @@
   <div class="card mb-3">
     <div class="card-body">
       <div class="row">      
-        <div class="col-8">Total spent:</div>
-        <div class="col-4"><%= @spent %></div>
+        <div class="col-9"><strong>Total spent:</strong></div>
+        <div class="col-3">US$ <%= @spent %></div>
       </div>
     </div>
   </div>         
@@ -16,12 +16,13 @@
             <%= cl_image_tag(i.group.icon, width: 72, height: 72, crop: 'pad') %>
           </div>
           <div class="col-6">        
-            <%= i.name %>
-            <br>
-            <%= i.created_at.strftime("%Y-%m-%d") %>
+            <strong><%= i.name %></strong>
+            <br>Created at <%= i.created_at.strftime("%Y-%m-%d") %>
+            <br>By: <span class="badge badge-secondary"><%= i.author.name %></span>
+            <br>Store: <span class="badge badge-secondary"><%= i.store.name %></span>
           </div>
           <div class="col-3">        
-            <%= i.amount %>
+            US$ <%= i.amount %>
           </div>
         </div>
       </div>

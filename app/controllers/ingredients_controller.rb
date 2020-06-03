@@ -12,7 +12,7 @@ class IngredientsController < ApplicationController
   def edit
     @page_title = 'EDIT INGREDIENT'
     @ingredient = Ingredient.find(params[:id])
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   def create
@@ -24,7 +24,7 @@ class IngredientsController < ApplicationController
       @page_title = 'NEW INGREDIENT'
       @stores = Store.all
       flash.now[:error] = @ingredient.errors.full_messages.join('. | ').to_s
-      render new_ingredient_path
+      render 'new'
     end
   end
 
@@ -37,7 +37,7 @@ class IngredientsController < ApplicationController
     else
       @page_title = 'EDIT INGREDIENT'
       flash.now[:error] = @ingredient.errors.full_messages.join('. | ').to_s
-      render edit_ingredient_path(@ingredient.id)
+      render 'edit'
     end
   end
 
@@ -49,7 +49,7 @@ class IngredientsController < ApplicationController
   end
 
   def nongrouped
-    @page_title = 'NON GROUPED'
+    @page_title = 'NON GROUPED INGREDIENTS'
     @non_grouped_ingredients = User.find(session[:user_id]).ingredients.non_grouped
     @spent = @non_grouped_ingredients.sum(&:amount)
   end

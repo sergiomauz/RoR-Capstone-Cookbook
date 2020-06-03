@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
     @ingredients = group.ingredients
     @page_title = group.name
     @spent = group.total_amount
+    @icon = group.icon
   end
 
   def new

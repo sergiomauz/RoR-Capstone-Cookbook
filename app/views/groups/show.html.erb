@@ -1,28 +1,34 @@
 <% if @ingredients.count > 0 %>
-
   <div class="card mb-3">
     <div class="card-body">
-      <div class="row">      
-        <div class="col-8">Total spent:</div>
-        <div class="col-4"><%= @spent %></div>
-      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">          
+          <%= cl_image_tag(@icon, class: 'sidebar-user-avatar', width: 150, height: 150, crop: 'pad') %>
+        </div>
+      </div>      
     </div>
-  </div>     
+  </div>  
+    <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">      
+        <div class="col-8"><strong>Total spent:</strong></div>
+        <div class="col-4">US$ <%= @spent %></div>
+      </div>      
+    </div>
+  </div>
 
   <% @ingredients.each do |i| %>
     <div class="card mb-3">
       <div class="card-body">
         <div class="row">
-          <div class="col-3">        
-            <%= cl_image_tag(i.group.icon, width: 72, height: 72, crop: 'pad') %>
-          </div>
-          <div class="col-6">        
-            <%= i.name %>
+          <div class="col-8">        
+            <strong><%= i.name %></strong>
             <br>Created at <%= i.created_at.strftime("%Y-%m-%d") %>
-            <br>by <%= i.author.name %>
+            <br>by <span class="badge badge-secondary"><%= i.author.name %></span>
+            <br>Store: <span class="badge badge-secondary"><%= i.store.name %></span>
           </div>
-          <div class="col-3">        
-            <%= i.amount %>
+          <div class="col-4">        
+            US$ <%= i.amount %>            
           </div>
         </div>
       </div>
@@ -37,4 +43,4 @@
     </div>
   </div>         
 <% end %>
-<%= link_to 'Back', groups_path, class: 'btn btn-lg btn-primary btn-block' %>
+<%= link_to 'Back', groups_path, class: 'btn btn-lg btn-success btn-block mb-4' %>

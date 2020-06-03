@@ -3,16 +3,16 @@
     <div class="card-body">
       <div class="form-group">
         <p>
-          <label>Ingredient:</label>
+          <label class="font-weight-bold">Ingredient:</label>
           <%= @ingredient.name %>
         </p>        
         <p>
-          <label>Amount:</label>
+          <label class="font-weight-bold">Amount:</label>
           <%= @ingredient.amount %>
         </p>                
       </div>
       <div class="form-group">
-        <%= f.label :group_id, 'Recipe: ' %>
+        <%= f.label :group_id, 'Recipe: ', class: 'font-weight-bold'%>
         <%= f.select('group_id', options_for_select(@groups.map { |group| [group.name, group.id] }), {}, {class: 'form-control'}) %>
       </div>
     </div>
