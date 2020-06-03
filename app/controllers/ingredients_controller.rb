@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   before_action :must_be_authenticated
-  
+
   def index
     @page_title = 'NEW INGREDIENT'
   end
