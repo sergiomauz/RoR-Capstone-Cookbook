@@ -6,7 +6,7 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
-    @page_title = 'NEW STORE'
+    @page_title = 'NEW STORE'    
   end
 
   def edit
@@ -22,7 +22,7 @@ class StoresController < ApplicationController
       redirect_to stores_path
     else
       @page_title = 'NEW STORE'
-      flash.now[:error] = @user.errors.full_messages.join('. | ').to_s
+      flash.now[:error] = @store.errors.full_messages.join('. | ').to_s
       render new_store_path
     end
   end

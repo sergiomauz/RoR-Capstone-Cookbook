@@ -6,6 +6,7 @@ class IngredientsController < ApplicationController
   def new
     @page_title = 'NEW INGREDIENT'
     @ingredient = current_user.ingredients.new
+    @stores = Store.all
   end
 
   def edit
@@ -15,13 +16,14 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @ingredient = current_user.ingredients.new(name: ingredient_params[:name], amount: ingredient_params[:amount])
+    @ingredient = current_user.ingredients.new(ingredient_params)
     if @ingredient.save
       flash[:notice] = 'Ingredient created!'
       redirect_to non_grouped_ingredients_path
     else
       @page_title = 'NEW INGREDIENT'
-      flash.now[:error] = @ingredient.errors.full_messages.join('. | ').to_s
+      @stores = Store.all
+      flash.now[:error] = @ingredient.errors.full_messages.join('. | ').to_s      
       render new_ingredient_path
     end
   end
@@ -55,6 +57,6 @@ class IngredientsController < ApplicationController
   private
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :amount, :group_id)
+    params.require(:ingredient).permit(:name, :amount, :group_id, :store_id)
   end
 end
