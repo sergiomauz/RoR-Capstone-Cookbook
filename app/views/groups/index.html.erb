@@ -3,17 +3,16 @@
     <a href="<%= group_path(g.id) %>" class="card mb-3">
       <div class="card-body">
         <div class="row">
-          <div class="col-3">        
+          <div class="col-3 justify-content-center">        
             <%= cl_image_tag(g.icon, width: 72, height: 72, crop: 'pad') %>
           </div>
-          <div class="col-7">        
-            <%= g.name %>
-            <br>Created at
-            <%= g.created_at.strftime("%Y-%m-%d") %>
-            <br>by <%= g.user.name %>
+          <div class="col-6 justify-content-center">        
+            <strong><%= g.name %></strong>
+            <br>Created at <%= g.created_at.strftime("%Y-%m-%d") %>
+            <br>by <span class="badge badge-secondary"><%= g.user.name %></span>
           </div>
-          <div class="col-2">        
-            <%= g.total_amount %>
+          <div class="col-3 justify-content-center">        
+            US$ <%= g.total_amount %>
           </div>
         </div>
       </div>

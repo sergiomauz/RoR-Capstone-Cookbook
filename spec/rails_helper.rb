@@ -46,5 +46,6 @@ RSpec.configure do |config|
 
   config.before(:each) do
     User.create(name: 'Sergio Mauricio Zambrano', username: 'sergiomauz')
+    Store.create(name: 'Wallmart')
   end
 end
