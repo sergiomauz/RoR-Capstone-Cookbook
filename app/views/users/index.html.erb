@@ -1,5 +1,20 @@
-<% if current_user %>
-  Holi!
+<% if current_user %>  
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4>Welcome: <%= current_user.name %></h4> 
+      <p>Now you can register all your recipes with its ingredients and prices. It could be useful if you want to know how much spent in your meals and where do you buy the ingredients.</p>
+      <p>Before to create ingredients, consider <strong>create one or more stores and recipes</strong> where you buy your ingredients.</p>
+      <p>
+        Also is important to consider:
+        <ul>
+          <li>Recipes are <strong>all Groups.</strong></li>
+          <li>Non grouped ingredients are <strong>all My External Transactions.</strong></li>
+          <li>Ingredients are <strong>all My Transactions.</strong></li>
+          <li>Store entity is <strong>the additional feature.</strong></li>
+        </ul>
+      </p>
+    </div>
+  </div>
 <% else %>
   <%= form_for :user, url: signin_path, method: 'post' do |f| %>
     <div class="card mb-3">

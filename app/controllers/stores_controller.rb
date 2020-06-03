@@ -23,20 +23,20 @@ class StoresController < ApplicationController
     else
       @page_title = 'NEW STORE'
       flash.now[:error] = @store.errors.full_messages.join('. | ').to_s
-      render new_store_path
+      render 'new'
     end
   end
 
   def update
     @store = Store.find(params[:id])
     @store.name = store_params[:name]
-
     if @store.save
       flash[:notice] = 'Store updated!'
       redirect_to stores_path
     else
+      @page_title = 'EDIT STORE'
       flash.now[:error] = @store.errors.full_messages.join('. | ').to_s
-      render edit_store_path(@store.id)
+      render 'edit'
     end
   end
 

@@ -259,7 +259,7 @@ DEPENDENCIES
   faker (~> 2.11)
   hirb (~> 0.7.3)
   jbuilder (~> 2.5)
-  listen (>= 3.0.5, < 3.2)
+  listen
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.2)

@@ -2,30 +2,28 @@
   <div class="card mb-3">
     <div class="card-body">
       <div class="row">      
-        <div class="col-8">Total spent:</div>
-        <div class="col-4"><%= @spent %></div>
+        <div class="col-9"><strong>Total spent:</strong></div>
+        <div class="col-3">US$ <%= @spent %></div>
       </div>
     </div>
   </div>     
 
   <% @non_grouped_ingredients.each do |i| %>
-    <div class="card mb-3">
+    <a href="<%= edit_ingredient_path(i.id) %>" class="card mb-3">
       <div class="card-body">
         <div class="row">
-          <div class="col-6">        
-            <%= i.name %>
-            <br>
-            <%= i.created_at.strftime("%Y-%m-%d") %>
+          <div class="col-9">        
+            <strong><%= i.name %></strong>
+            <br>Created at <%= i.created_at.strftime("%Y-%m-%d") %>
+            <br>By: <span class="badge badge-secondary"><%= i.author.name %></span>
+            <br>Store: <span class="badge badge-secondary"><%= i.store.name %></span>
           </div>
           <div class="col-3">        
-            <%= i.amount %>
+            US$ <%= i.amount %>
           </div>
-          <div class="col-3">        
-            <%= link_to 'Edit', edit_ingredient_path(i.id) %>
-          </div>          
         </div>
       </div>
-    </div>                   
+    </a>                   
   <% end %>
 <% else %>
   <div class="card mb-3">

@@ -13,19 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.bg-sidebar-item {
-  background-color: transparent;
-}
-
-.bg-sidebar-item:hover {
-  background-color:#ffffff1c;
-}
-
-.bg_3778c2 {
-  background-color: #3778c2;
-}
-
-.bg_f1f3f2 {
-  background-color: #f1f3f2;
-}
