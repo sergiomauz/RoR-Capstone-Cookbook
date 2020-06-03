@@ -23,7 +23,7 @@
 
 <script>
   var user_image_file = document.getElementById("user_image_file");    
-  user_image_file.onchange = ((e) => {
+  user_image_file.onchange = (function(e) {
     let label_user_image_file = user_image_file.labels[0];  
     let reader = new FileReader();
 
