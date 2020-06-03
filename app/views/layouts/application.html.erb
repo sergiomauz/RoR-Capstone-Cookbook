@@ -1,15 +1,98 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RoRCapstoneCookbook</title>
+    <title>Cook Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg_f1f3f2">
+    <div class="d-flex" id="wrapper">
+      <div class="border-right" id="sidebar-wrapper">
+        <% if current_user %>
+          <div class="sidebar-heading d-flex justify-content-center">  
+            <% if current_user.avatar.nil? %>
+              <%= image_tag('/generic-user.png', class: 'sidebar-user-avatar') %>
+            <% else %>
+              <%= cl_image_tag(current_user.avatar, class: 'sidebar-user-avatar', width: 150, height: 150, crop: 'pad') %>
+            <% end %>            
+          </div>
+          <div class="container mb-3">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <span class="bg-sidebar-item text-white"><%= current_user.name %></span>  
+              </div>
+              <div class="col-12 d-flex justify-content-center">
+                <span class="badge badge-secondary"><%= current_user.username %></span>  
+              </div>              
+            </div>
+          </div>
+          <div class="list-group list-group-flush">
+            <%= link_to "<i class='fas fa-list-ul'></i><span> Non grouped</span>".html_safe, non_grouped_ingredients_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
+            <%= link_to "<i class='fas fa-list-ol'></i><span> Ingredients<span>".html_safe, grouped_ingredients_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>            
+            <%= link_to "<i class='fas fa-stroopwafel'></i><span> Recipes</span>".html_safe, groups_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>          
+            <%= link_to "<i class='fas fa-store-alt'></i><span> Stores</span>".html_safe, stores_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>          
+            <%= link_to "<i class='fas fa-sign-out-alt'></i><span><span> Sign out</span>".html_safe, signout_path(current_user.id), method: 'delete', class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
+          </div>          
+        <% else %>
+          <div class="sidebar-heading d-flex justify-content-center">
+            <%= image_tag('/cookbook.jpg', class: 'sidebar-user-avatar') %>
+          </div>          
+          <div class="container mb-3">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <span class="bg-sidebar-item text-white">My Cookbook</span>  
+              </div>
+              <div class="col-12 d-flex justify-content-center">
+                <span class="badge badge-secondary">Cost Record</span>  
+              </div>              
+            </div>
+          </div>          
+          <div class="list-group list-group-flush">
+            <%= link_to "<i class='fas fa-user-plus'></i><span> Sign up</span>".html_safe, new_user_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
+            <%= link_to "<i class='fas fa-sign-in-alt'></i><span> Sign in</span>".html_safe, root_path, class: 'list-group-item list-group-item-action bg-sidebar-item text-white' %>
+          </div>
+        <% end %>    
+        
+      </div>
+      <div id="page-content-wrapper">
+        <nav class="navbar bg_3778c2 d-flex justify-content-between mb-3">
+          <button class="btn bg-sidebar-item text-white" Type="button" id="menu-toggle">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </button>
+          <h3 class="text-white"><%= @page_title %></h3>
+          <button class="btn bg-sidebar-item text-white" Type="button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>          
+        </nav>
+        <div class="container-fluid">
+          <% flash.each do |type, messages| %>
+            <% messages.split("|").each do |msg| %>
+              <% if flash[:notice] %>
+                <div class="alert alert-info" role="alert">
+              <% elsif flash[:success] %>
+                <div class="alert alert-success" role="alert">
+              <% elsif flash[:alert] %>
+                <div class="alert alert-warning" role="alert">
+              <% elsif flash[:error] %>
+                <div class="alert alert-danger" role="alert">                
+              <% else %>
+                <div class="alert alert-secondary" role="alert">
+              <% end %>                         
+              <%= msg %>
+              </div>
+            <% end %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>  
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

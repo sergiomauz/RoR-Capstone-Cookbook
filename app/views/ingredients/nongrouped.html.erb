@@ -1,0 +1,39 @@
+<% if @non_grouped_ingredients.count > 0 %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">      
+        <div class="col-8">Total spent:</div>
+        <div class="col-4"><%= @spent %></div>
+      </div>
+    </div>
+  </div>     
+
+  <% @non_grouped_ingredients.each do |i| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">        
+            <%= i.name %>
+            <br>
+            <%= i.created_at.strftime("%Y-%m-%d") %>
+          </div>
+          <div class="col-3">        
+            <%= i.amount %>
+          </div>
+          <div class="col-3">        
+            <%= link_to 'Edit', edit_ingredient_path(i.id) %>
+          </div>          
+        </div>
+      </div>
+    </div>                   
+  <% end %>
+<% else %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">      
+        <div class="col-12">There are no ingredients in this list.</div>                
+      </div>
+    </div>
+  </div>         
+<% end %>
+<%= link_to 'Add new', new_ingredient_path, class: 'btn btn-lg btn-success btn-block mb-4' %>
