@@ -1,74 +1,48 @@
-class StoresController < ApplicationController
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
-
-  # GET /stores
-  # GET /stores.json
+class StoresController < ApplicationController  
   def index
-    @stores = Store.all
+    @stores = Store.all.order('name ASC')
+    @page_title = 'STORES'
   end
 
-  # GET /stores/1
-  # GET /stores/1.json
-  def show
-  end
-
-  # GET /stores/new
   def new
     @store = Store.new
+    @page_title = 'NEW STORE'
   end
 
-  # GET /stores/1/edit
   def edit
+    @store = Store.find(params[:id])
+    @page_title = 'EDIT STORE'
   end
 
-  # POST /stores
-  # POST /stores.json
   def create
     @store = Store.new(store_params)
 
-    respond_to do |format|
-      if @store.save
-        format.html { redirect_to @store, notice: 'Store was successfully created.' }
-        format.json { render :show, status: :created, location: @store }
-      else
-        format.html { render :new }
-        format.json { render json: @store.errors, status: :unprocessable_entity }
-      end
+    if @store.save
+      flash[:notice] = 'Store created!'
+      redirect_to stores_path
+    else
+      @page_title = 'NEW STORE'
+      flash.now[:error] = @user.errors.full_messages.join('. | ').to_s
+      render new_store_path
     end
   end
 
-  # PATCH/PUT /stores/1
-  # PATCH/PUT /stores/1.json
   def update
-    respond_to do |format|
-      if @store.update(store_params)
-        format.html { redirect_to @store, notice: 'Store was successfully updated.' }
-        format.json { render :show, status: :ok, location: @store }
-      else
-        format.html { render :edit }
-        format.json { render json: @store.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+    @store = Store.find(params[:id])
+    @store.name = store_params[:name]
 
-  # DELETE /stores/1
-  # DELETE /stores/1.json
-  def destroy
-    @store.destroy
-    respond_to do |format|
-      format.html { redirect_to stores_url, notice: 'Store was successfully destroyed.' }
-      format.json { head :no_content }
+    if @store.save
+      flash[:notice] = 'Store updated!'
+      redirect_to stores_path
+    else
+      flash.now[:error] = @store.errors.full_messages.join('. | ').to_s
+      render edit_store_path(@store.id)
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_store
-      @store = Store.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def store_params
-      params.require(:store).permit(:name)
-    end
+  def store_params
+    params.require(:store).permit(:name)
+  end
 end

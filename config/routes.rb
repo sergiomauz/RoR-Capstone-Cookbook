@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :stores
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :stores, only: %i[index new create edit update]
   resources :users, only: %i[index new create]
   resources :groups, only: %i[index show new create]
   resources :ingredients, only: %i[new create edit update]

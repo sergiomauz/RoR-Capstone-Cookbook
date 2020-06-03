@@ -1,22 +1,11 @@
-<%= form_with(model: store, local: true) do |form| %>
-  <% if store.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
-
-      <ul>
-      <% store.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_with(model: store, local: true) do |f| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="form-group">
+        <%= f.label :name, 'Name: ', class: 'sr-only' %>
+        <%= f.text_field :name, class: 'form-control', maxlength: 35, placeholder: 'Name' %>
+     </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  </div> 
+  <%= f.submit 'Save store', class: 'btn btn-lg btn-success btn-block'%>
 <% end %>
