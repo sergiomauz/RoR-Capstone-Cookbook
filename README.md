@@ -12,7 +12,7 @@
 
 ![screenshot-5](https://user-images.githubusercontent.com/36812672/83698331-cd053680-a5c6-11ea-8920-be93ee7db775.png)
 
-![screenshot-6](https://user-images.githubusercontent.com/36812672/83698334-cf679080-a5c6-11ea-8e93-715be56656a9.png)
+![screenshot-6](https://user-images.githubusercontent.com/36812672/83709365-f8e2e500-a5e3-11ea-95bf-c44555c6a93c.png)
 
 
 ## Features
