@@ -12,12 +12,10 @@ User.create(
   username: 'mjohnson'
 )
 
-5.times do |i|
-  User.create(
-    name: "#{Faker::Name.name}",
-    username: "user_#{i}"
-  )
-end
+User.create(
+  name: 'Gordon Ramsay',
+  username: 'gramsay'
+)
 
 Store.create(
   name: 'Amazon Supermarket'

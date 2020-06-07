@@ -44,8 +44,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.before(:each) do
+  config.before(:all) do
     User.create(name: 'Sergio Mauricio Zambrano', username: 'sergiomauz')
+    Group.create(name: 'Patasca from Tacna', icon: 'http://localhost/image.jpg', user_id: User.first.id)
     Store.create(name: 'Wallmart')
   end
 end
