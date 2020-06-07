@@ -46,13 +46,13 @@ class IngredientsController < ApplicationController
   def grouped
     user = User.find(session[:user_id])
     @page_title = 'INGREDIENTS'
-    @grouped_ingredients = user.ingredients.grouped
+    @grouped_ingredients = user.ingredients.grouped.includes(:group, :store)
     @spent = @grouped_ingredients.sum(&:amount)
   end
 
   def nongrouped
     @page_title = 'NON GROUPED INGREDIENTS'
-    @non_grouped_ingredients = User.find(session[:user_id]).ingredients.non_grouped
+    @non_grouped_ingredients = User.find(session[:user_id]).ingredients.non_grouped.includes(:store)
     @spent = @non_grouped_ingredients.sum(&:amount)
   end
 
