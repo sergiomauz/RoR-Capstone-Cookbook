@@ -3,12 +3,12 @@ class GroupsController < ApplicationController
 
   def index
     @page_title = 'RECIPES'
-    @groups = Group.all.order('name ASC')
+    @groups = Group.order('name ASC').includes(:ingredients, :user)
   end
 
   def show
     group = Group.find(params[:id])
-    @ingredients = group.ingredients
+    @ingredients = group.ingredients.includes(:author, :store)
     @page_title = group.name
     @spent = group.total_amount
     @icon = group.icon
